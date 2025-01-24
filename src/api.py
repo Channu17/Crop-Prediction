@@ -39,6 +39,8 @@ class Values(BaseModel):
     ph : float
     rainfall : float
 
+class Values()
+
 @app.post('/prediction')
 def prediction(values:Values):
     try:
@@ -91,6 +93,10 @@ async def soil_classification(file: UploadFile = File(...)):
         
     except Exception as e:
         pass
+
+
+@app.post("/fertilizerReccommendation")
+def fertilizerReccommendation()
 
 @app.get("/")
 def read_root():
