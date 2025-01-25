@@ -33,7 +33,7 @@ with open('models/fertilizerLabelencoder.pkl', 'rb') as f:
 with open('models/fertilizerScalar.pkl', 'rb') as f:
     scalar_sc = pickle.load(f) 
     
-with open('models/random_forest.pkl', 'rb') as f:
+with open('models/random_forest_fc.pkl', 'rb') as f:
     rnd_clf = pickle.load(f)   
 
 def preprocess_image(image):
@@ -78,10 +78,14 @@ def prediction(values:Values):
             "rainfall": values.rainfall
         }])
         scaled_data = scalar.transform(input_data)
-        prediction = model.predict(scaled_data)
-        decoded_prediction = label_encoder.inverse_transform(prediction)
+        probabilities = model.predict_proba(scaled_data)
+        top_indices = probabilities[0].argsort()[-4:][::-1]
+        top_predictions = [(label_encoder.inverse_transform([idx])[0], probabilities[0][idx]) for idx in top_indices]
         
-        return {"prediction": decoded_prediction[0]}
+        
+        results = [{"class": pred[0], "probability": pred[1]} for pred in top_predictions]
+        
+        return {"top_prediction": results}
     except KeyError as e:
         return {"error": f"Missing key in input data: {str(e)}"}, 400
     
