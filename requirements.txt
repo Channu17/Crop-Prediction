@@ -9,3 +9,4 @@ tensorflow
 python-multipart
 opencv-python
 streamlit
+opencv-python
