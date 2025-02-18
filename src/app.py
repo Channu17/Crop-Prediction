@@ -11,22 +11,22 @@ st.sidebar.title("Navigation")
 option = st.sidebar.radio("Select an option", ["Crop Prediction", "Soil Classification", "Fertilizer Recommendation"])
 
 # Load Models
-with open('../src/models/random_forest.pkl', 'rb') as f:
+with open('models/random_forest.pkl', 'rb') as f:
     model = pickle.load(f)
-with open('../src/models/label_encoder.pkl', 'rb') as f:
+with open('models/label_encoder.pkl', 'rb') as f:
     label_encoder = pickle.load(f)
-with open('../src/models/scalar.pkl', 'rb') as f:
+with open('models/scalar.pkl', 'rb') as f:
     scalar = pickle.load(f)
-soil_classifier = tf.keras.models.load_model('../src/models/soilClassification.keras')
-with open('../src/models/label_encoder_soil_classification.pkl', 'rb') as f:
+soil_classifier = tf.keras.models.load_model('models/soilClassification.keras')
+with open('models/label_encoder_soil_classification.pkl', 'rb') as f:
     label_encoder_sc = pickle.load(f)
-with open('../src/models/ohe.pkl', 'rb') as f:
+with open('models/ohe.pkl', 'rb') as f:
     ohe = pickle.load(f)
-with open('../src/models/fertilizerLabelencoder.pkl', 'rb') as f:
+with open('models/fertilizerLabelencoder.pkl', 'rb') as f:
     label_encoder_fc = pickle.load(f)
-with open('../src/models/fertilizerScalar.pkl', 'rb') as f:
+with open('models/fertilizerScalar.pkl', 'rb') as f:
     scalar_sc = pickle.load(f)
-with open('../src/models/random_forest_fc.pkl', 'rb') as f:
+with open('models/random_forest_fc.pkl', 'rb') as f:
     rnd_clf = pickle.load(f)
 
 def preprocess_image(image):
