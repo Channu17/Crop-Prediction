@@ -8,3 +8,4 @@ uvicorn
 tensorflow
 python-multipart
 opencv-python
+streamlit
