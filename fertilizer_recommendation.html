@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Amet - Fertilizer Recommendation</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Farm Amet</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="crop_prediction.html">Crop Prediction</a></li>
+                <li><a href="fertilizer_recommendation.html">Fertilizer Recommendation</a></li>
+                <li><a href="soil_classification.html">Soil Classification</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="content-section">
+            <h2>Fertilizer Recommendation</h2>
+            <form id="fertilizerRecommendationForm">
+                <div>
+                    <label for="temperature_fr">Temperature (°C):</label>
+                    <input type="number" id="temperature_fr" name="temperature_fr" step="0.1" required>
+                </div>
+                <div>
+                    <label for="humidity_fr">Humidity (%):</label>
+                    <input type="number" id="humidity_fr" name="humidity_fr" step="0.1" required>
+                </div>
+                <div>
+                    <label for="moisture_fr">Moisture (%):</label>
+                    <input type="number" id="moisture_fr" name="moisture_fr" step="0.1" required>
+                </div>
+                <div>
+                    <label for="soil_type_fr">Soil Type:</label>
+                    <select id="soil_type_fr" name="soil_type_fr" required>
+                        <option value="Loamy">Loamy</option>
+                        <option value="Sandy">Sandy</option>
+                        <option value="Clayey">Clayey</option>
+                        <option value="Black">Black</option>
+                        <option value="Red">Red</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="crop_type_fr">Crop Type:</label>
+                    <select id="crop_type_fr" name="crop_type_fr" required>
+                        <option value="Sugarcane">Sugarcane</option>
+                        <option value="Cotton">Cotton</option>
+                        <option value="Millets">Millets</option>
+                        <option value="Pulses">Pulses</option>
+                        <option value="Paddy">Paddy</option>
+                        <option value="Wheat">Wheat</option>
+                        <option value="Barley">Barley</option>
+                        <option value="Oil seeds">Oil seeds</option>
+                        <option value="Tobacco">Tobacco</option>
+                        <option value="Ground Nuts">Ground Nuts</option>
+                        <option value="Maize">Maize</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="nitrogen_fr">Nitrogen (N):</label>
+                    <input type="number" id="nitrogen_fr" name="nitrogen_fr" step="0.1" required>
+                </div>
+                <div>
+                    <label for="potassium_fr">Potassium (K):</label>
+                    <input type="number" id="potassium_fr" name="potassium_fr" step="0.1" required>
+                </div>
+                <div>
+                    <label for="phosphorous_fr">Phosphorous (P):</label>
+                    <input type="number" id="phosphorous_fr" name="phosphorous_fr" step="0.1" required>
+                </div>
+                <button type="submit">Recommend Fertilizer</button>
+            </form>
+            <div id="fertilizerRecommendationResult" class="result-display"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Farm Amet. All rights reserved.</p>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>

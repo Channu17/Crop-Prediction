@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Amet - Soil Classification</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Farm Amet</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="crop_prediction.html">Crop Prediction</a></li>
+                <li><a href="fertilizer_recommendation.html">Fertilizer Recommendation</a></li>
+                <li><a href="soil_classification.html">Soil Classification</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="content-section">
+            <h2>Soil Classification</h2>
+            <form id="soilClassificationForm">
+                <div>
+                    <label for="soilImage">Upload Soil Image:</label>
+                    <input type="file" id="soilImage" name="soilImage" accept=".jpg, .png, .jpeg" required>
+                </div>
+                <button type="submit">Classify Soil</button>
+            </form>
+            <div id="soilClassificationResult" class="result-display"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Farm Amet. All rights reserved.</p>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>

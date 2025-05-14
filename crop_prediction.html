@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Mate - Crop Prediction</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="crop-prediction-page">
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Farm</span> Mate</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="current"><a href="crop_prediction.html">Crop Prediction</a></li>
+                    <li><a href="fertilizer_recommendation.html">Fertilizer Recommendation</a></li>
+                    <li><a href="soil_classification.html">Soil Classification</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 class="page-header">Crop Prediction</h2>
+        <form id="cropPredictionForm">
+            <label for="N">Nitrogen (N):</label>
+            <input type="number" id="N" name="N" step="0.1" required>
+
+            <label for="P">Phosphorous (P):</label>
+            <input type="number" id="P" name="P" step="0.1" required>
+
+            <label for="K">Potassium (K):</label>
+            <input type="number" id="K" name="K" step="0.1" required>
+
+            <label for="temperature">Temperature (°C):</label>
+            <input type="number" id="temperature" name="temperature" step="0.1" required>
+
+            <label for="humidity">Humidity (%):</label>
+            <input type="number" id="humidity" name="humidity" step="0.1" required>
+
+            <label for="ph">Soil pH:</label>
+            <input type="number" id="ph" name="ph" step="0.1" required>
+
+            <label for="rainfall">Rainfall (mm):</label>
+            <input type="number" id="rainfall" name="rainfall" step="0.1" required>
+
+            <button type="submit">Predict Crop</button>
+        </form>
+        <div id="response"></div>
+    </div>
+
+    <footer>
+        <p>Farm Mate &copy; 2025</p>
+    </footer>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
