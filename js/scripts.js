@@ -27,9 +27,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify(payload)
                 });
                 const result = await response.json();
-                document.getElementById('cropPredictionResult').textContent = JSON.stringify(result, null, 2);
+                const resultDiv = document.getElementById('cropPredictionResult');
+                resultDiv.innerHTML = ''; // Clear previous results
+                if (result.error) {
+                    resultDiv.innerHTML = `<p class="error-message">Error: ${result.error}</p>`;
+                } else if (result.top_prediction) {
+                    let outputHtml = '<h3>Top Crop Predictions:</h3><ul>';
+                    result.top_prediction.forEach(pred => {
+                        outputHtml += `<li><strong>${pred.class}:</strong> ${(pred.probability * 100).toFixed(2)}%</li>`;
+                    });
+                    outputHtml += '</ul>';
+                    resultDiv.innerHTML = outputHtml;
+                } else {
+                    resultDiv.innerHTML = '<p>No prediction data found.</p>';
+                }
             } catch (error) {
-                document.getElementById('cropPredictionResult').textContent = 'Error: ' + error.message;
+                document.getElementById('cropPredictionResult').innerHTML = `<p class="error-message">Error: ${error.message}</p>`;
             }
         });
     }
@@ -40,16 +53,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(fertilizerRecommendationForm);
             const payload = {
                 Temparature: parseFloat(formData.get('temperature_fr')),
-                Humidity: parseFloat(formData.get('humidity_fr')),
+                Humidity: parseFloat(formData.get('humidity_fr')), // Corrected key based on Python API
                 Moisture: parseFloat(formData.get('moisture_fr')),
-                Soil_Type: formData.get('soil_type_fr'),
-                Crop_Type: formData.get('crop_type_fr'),
+                Soil_Type: formData.get('soil_type_fr'), // Corrected key based on Python API
+                Crop_Type: formData.get('crop_type_fr'), // Corrected key based on Python API
                 Nitrogen: parseFloat(formData.get('nitrogen_fr')),
                 Potassium: parseFloat(formData.get('potassium_fr')),
                 Phosphorous: parseFloat(formData.get('phosphorous_fr')),
             };
             try {
-                const response = await fetch(`${API_URL}/fertilizerReccommendation`, { // Corrected endpoint name
+                const response = await fetch(`${API_URL}/fertilizerReccommendation`, { // Note: API endpoint is fertilizerReccommendation (double c)
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -57,9 +70,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify(payload)
                 });
                 const result = await response.json();
-                document.getElementById('fertilizerRecommendationResult').textContent = JSON.stringify(result, null, 2);
+                const resultDiv = document.getElementById('fertilizerRecommendationResult');
+                resultDiv.innerHTML = ''; // Clear previous results
+                if (result.error) {
+                    resultDiv.innerHTML = `<p class="error-message">Error: ${result.error}</p>`;
+                } else if (result.prediction) {
+                    resultDiv.innerHTML = `<h3>Recommended Fertilizer:</h3><p class="success-message">${result.prediction}</p>`;
+                } else {
+                    resultDiv.innerHTML = '<p>No recommendation data found.</p>';
+                }
             } catch (error) {
-                document.getElementById('fertilizerRecommendationResult').textContent = 'Error: ' + error.message;
+                document.getElementById('fertilizerRecommendationResult').innerHTML = `<p class="error-message">Error: ${error.message}</p>`;
             }
         });
     }
@@ -68,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
         soilClassificationForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const formData = new FormData(soilClassificationForm);
-            // 'file' is the expected key for the backend
             const payload = new FormData();
             payload.append('file', formData.get('soilImage'));
 
@@ -78,9 +98,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: payload // FormData is sent directly, no need for Content-Type header for multipart/form-data
                 });
                 const result = await response.json();
-                document.getElementById('soilClassificationResult').textContent = JSON.stringify(result, null, 2);
+                const resultDiv = document.getElementById('soilClassificationResult');
+                resultDiv.innerHTML = ''; // Clear previous results
+                if (result.error) {
+                    resultDiv.innerHTML = `<p class="error-message">Error: ${result.error}</p>`;
+                } else if (result.soil) {
+                    resultDiv.innerHTML = `<h3>Soil Classification:</h3><p class="success-message">${result.soil}</p>`;
+                } else {
+                    resultDiv.innerHTML = '<p>No classification data found.</p>';
+                }
             } catch (error) {
-                document.getElementById('soilClassificationResult').textContent = 'Error: ' + error.message;
+                document.getElementById('soilClassificationResult').innerHTML = `<p class="error-message">Error: ${error.message}</p>`;
             }
         });
     }

@@ -288,6 +288,44 @@ footer {
     border-color: #8b3232;
 }
 
+.result-display {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #333; /* Dark background for result display */
+    border: 1px solid #444; /* Subtle border */
+    color: #e0e0e0; /* Light text color */
+}
+
+.result-display h3 {
+    margin-top: 0;
+    color: #e8491d; /* Accent color for headings */
+}
+
+.result-display ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.result-display li {
+    padding: 5px 0;
+    border-bottom: 1px solid #444; /* Separator for list items */
+}
+
+.result-display li:last-child {
+    border-bottom: none;
+}
+
+.result-display .error-message {
+    color: #ff6b6b; /* Reddish color for errors */
+    font-weight: bold;
+}
+
+.result-display .success-message {
+    color: #76c7c0; /* Greenish color for success */
+    font-weight: bold;
+}
+
 /* Add some vibrancy to the links in the navbar */
 nav ul li a {
     padding: 5px 10px;
@@ -298,21 +336,4 @@ nav ul li a {
 nav ul li a:hover, nav ul li.current a {
     background-color: #e8491d; /* Vibrant orange background on hover/current */
     color: #ffffff !important; /* White text on hover/current */
-}
-
-/* Specific page background images - ensure these do not override the dark theme */
-body.home-page {
-    /* background: none; Ensure no specific background overrides body */
-}
-
-body.crop-prediction-page {
-    /* background: none; Ensure no specific background overrides body */
-}
-
-body.fertilizer-page {
-    /* background: none; Ensure no specific background overrides body */
-}
-
-body.soil-page {
-    /* background: none; Ensure no specific background overrides body */
 }
