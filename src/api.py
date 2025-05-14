@@ -7,8 +7,21 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 import cv2
+from fastapi.middleware.cors import CORSMiddleware
+
+
+
 
 app = FastAPI()
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
 
 with open('src/models/random_forest.pkl', 'rb') as f:
     model = pickle.load(f)
